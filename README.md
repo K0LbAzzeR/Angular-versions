@@ -1,15 +1,31 @@
 # Angular-versions
 История развития Angular (аля "Чего нового")
 ## 8.0.0 (2019-05-28)
-### 
-### 
-### 
-### 
-### 
-### 
-### 
-### 
-### 
+### Поддержка TypeScript 3.4
+### Ivy.
+Ivy - это новый компилятор, а также новый движок рендеринга. Ivy может генерировать значительно меньшие бандлы, инкрементную компиляцию, а также является основой для будущих инноваций в Angular.
+
+Если вы уже хотите попробовать Ivy, вы можете создать новый проект с ключем enable-ivy:
+```
+ng new ivy-project --enable-ivy
+```
+Данный ключ говрит CLI сохранить следующую запись в конфигурации tsconfig.app.json:
+```json
+"angularCompilerOptions": { 
+        "enableIvy": true
+}
+```
+### Новые фичи ngUpgrade
+В службу локации был добавлен новый метод onUrlChange для отслеживания изменений URL-адресов:
+```typescript
+export class AppComponent {
+  constructor(loc: Location, pLoc: PlatformLocation) {
+    loc.onUrlChange((url) => console.debug('url change', url));
+    console.debug('hostname: ', pLoc.hostname);
+  }
+}
+```
+Сервис PlatformLocation предлагает дополнительный доступ к отдельным частям URL-адреса. 
 ## 7.0.0 (2018-10-18)
 ### Поддержка TypeScript 3.1
 ### Поддержка RxJS 6.3
